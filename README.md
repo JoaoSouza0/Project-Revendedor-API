@@ -29,7 +29,7 @@ Antes de começar, verifique se você atendeu aos seguintes requisitos:
 * Ter o XAMPP instalado.
 * Ter o Composer instalado.
 
-## ☕ Usando Ranek Site
+## ☕ Usando Revendedor APi
 
 Para usar Ranek Site, siga estas etapas:
 
