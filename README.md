@@ -31,7 +31,7 @@ Antes de começar, verifique se você atendeu aos seguintes requisitos:
 
 ## ☕ Usando Revendedor APi
 
-Para usar Ranek Site, siga estas etapas:
+Para usar Revendedor APi, siga estas etapas:
 
 ```
 - Clone o repositorio da pasta httpDocs do Xampp
