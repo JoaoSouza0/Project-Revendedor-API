@@ -9,19 +9,22 @@ class TransactionController extends Controller
 {
 
     public function index()
-    {   
+    {
 
         $transactions = Transaction::get()->toJson(JSON_PRETTY_PRINT);
         return response($transactions, 200);
-        
+
     }
 
     public function store(Request $request)
     {
         $transactions = new Transaction();
-        $transactions->seller_id = $request->seller_id;
+
         $transactions->buyer_id = $request->buyer_id;
+        $transactions->seller_id = $request->seller_id;
         $transactions->product_id = $request->product_id;
+        $transactions->total_vl = $request->total_vl;
+        $transactions->quantity = $request->quantity;
         $transactions->save();
         return response()->json([
             "message" => "Transaction record created"

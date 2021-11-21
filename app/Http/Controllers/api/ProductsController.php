@@ -21,10 +21,11 @@ class ProductsController extends Controller
         $products->name = $request->name;
         $products->user_id = $request->user_id;
         $products->price = $request->price;
-        $products->sell = $request->sell;
+        $products->quantity = $request->quantity;
+        $products->imagePath = $request->imagePath;
         $products->descript = $request->descript;
-        $products->save(); 
-    
+        $products->save();
+
         return response()->json([
             "message" => "Product Save"
           ], 200);
@@ -46,29 +47,30 @@ class ProductsController extends Controller
         if (Product::where('user_id', $id)->exists()) {
             $product = Product::where('user_id', $id)->get()->toJson(JSON_PRETTY_PRINT);
             return response($product, 200);
-          } else {  
+          } else {
             return response()->json([], 404);
           }
     }
 
     public function update(Request $request, $id)
-    {       
+    {
         if (Product::where('id', $id)->exists()) {
             $product = Product::find($id);
             $product->name = is_null($request->name) ? $product->name : $request->name;
             $product->price = is_null($request->price) ? $product->price : $request->price;
-            $product->sell = is_null($request->sell) ? $product->sell : $request->sell;
+            $product->quantity = is_null($request->quantity) ? $product->quantity : ($request->quantity - $product->quantity);
+            $product->imagePath = is_null($request->imagePath) ? $product->imagePath : $request->imagePath;
             $product->descript = is_null($request->descript) ? $product->descript : $request->descript;
             $product->save();
-    
+
             return response()->json( $request, 200);
 
             } else {
-                
+
             return response()->json([
                 "message" => "Student not found"
             ], 404);
-            
+
         }
         //
     }
@@ -86,6 +88,6 @@ class ProductsController extends Controller
           "message" => "Student not found"
         ], 404);
       }
-  
+
     }
 }

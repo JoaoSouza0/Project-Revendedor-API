@@ -18,9 +18,9 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->unsignedBigInteger('user_id');
             $table->string('price');
-            $table->string('sell');
+            $table->integer('quantity');
+            $table->string('imagePath');
             $table->text('descript')->nullable();
-            $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
 
